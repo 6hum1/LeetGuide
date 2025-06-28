@@ -1,10 +1,27 @@
 {
-    "version": "1.0.0",
-    "manifest_version": 3,
-    "name": "Clicker Chrome Extension",
-    "description": "This is a Chrome extension built with React & Tailwind By ...",
-    "action": {
-        "default_popup": "js/index.html",
-        "default_title": "Clicker Chrome Extension"
-    }
+   "manifest_version" : 3,
+   "name":"LeetGuide",
+   "version":"1.0.0",
+   "description":"Your AI DSA helper",
+
+   "permissions":["scripting","activeTab","storage","tabs"],
+   "action":{
+    "default_popup":"popup.html",
+    "default_icon":"icon.png"
+   },
+   "content_scripts":[
+    {
+        "matches":["https://leetcode.com/problems/*"],
+        "js":["content.js"],
+        "run_at":"document_idle"
+    } 
+   ],
+
+   "background":{
+    "service_worker":"background.js"
+   },
+   "options_page":"options.html",
+   "host_permissions":["https://leetcode.com/problems/*"]
+
+
 }
